@@ -1,0 +1,57 @@
+<div class="container" ng-cloak="">
+    <h2>Sign Up</h2>
+    <form ng-submit="doSignUp(user)" name="signUp">
+        <div class="row">
+            <h4>Account</h4>
+            <div class="input-group input-group-icon">
+                <input type="text" name="username" ng-model="user.username" ng-maxlength="20" ng-pattern="/^[a-zA-Z.'_  ]*$/" placeholder="Full Name" required/>
+                <div class="input-icon">
+                    <i class="fa fa-user"></i>
+                </div>
+            </div>
+            <div ng-messages="signUp.username.$error">
+                <p ng-message="maxlength">Your name is too long (max 20 charater).</p>
+                <p ng-message="pattern">Username must be contains letters and these charaters ._' .</p>
+            </div>
+            <div class="input-group input-group-icon">
+                <input type="email" name="email" ng-model="user.emailId" placeholder="Email Adress" required/>
+                <div class="input-icon">
+                    <i class="fa fa-envelope"></i>
+                </div>
+            </div>
+            <div ng-messages="signUp.email.$error">
+                <p ng-message="email">This field must be a valid email address (email@address.com).</p>
+            </div>
+            <div class="input-group input-group-icon">
+                <input type="password" name="password" ng-model="user.password" ng-minlength="6" placeholder="Password" required/>
+                <div class="input-icon">
+                    <i class="fa fa-key"></i>
+                </div>
+            </div>
+            <div ng-messages="signUp.password.$error">
+                <p ng-message="minlength">Your name is too short (min 6 charater).</p>
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                <h4>Date of Birth</h4>
+                <div class="input-group input-group-icon">
+                    <input type="date" max="{{maxDate}}" ng-model="user.dob" required/>
+                    <div class="input-icon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h4>Terms and Conditions</h4>
+            <div class="input-group">
+                <input type="checkbox" id="terms" ng-model="user.acceptTerms" />
+                <label for="terms">I accept the terms and conditions for signing up to this service, and hereby confirm I have read the privacy
+                    policy.
+                </label>
+            </div>
+        </div>
+        <input type="submit" value="Sign-Up" />
+    </form>
+</div>
